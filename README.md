@@ -1,45 +1,75 @@
-# cucumber-cypress-exemplo
+# Automação Web Avançada — Cypress com Cucumber
 
-Exemplo de automação de testes usando Cypress com Cucumber para estudantes da EBAC.
+## Objetivo
 
-## 📋 Pré-requisitos
+Projeto de automação de testes de interface utilizando Cypress integrado ao Cucumber, desenvolvido durante a formação em Engenharia de Qualidade de Software.
 
-- Node.js (versão 14 ou superior)
-- npm ou yarn
-- Git
+Neste projeto desenvolvi cenários de teste utilizando BDD para organizar o comportamento esperado da aplicação de forma mais próxima da linguagem do negócio.
 
-## 🚀 Como usar este projeto
+## O que desenvolvi
 
-### 1. Clone o repositório
+- Automação E2E com Cypress.
+- Organização de cenários utilizando Cucumber e BDD.
+- Execução dos cenários em modo gráfico e headless.
+- Execução de cenários utilizando tags.
+- Estruturação dos testes para facilitar leitura e manutenção.
+
+## Tecnologias
+
+- Cypress
+- Cucumber
+- BDD
+- JavaScript
+- Node.js
+
+## Pré-requisitos
+
+- Node.js 14 ou superior.
+- npm ou yarn.
+- Git.
+
+## Instalação
+
 ```bash
-git clone https://github.com/EBAC-QE/cucumber-cypress-exemplo.git
+git clone https://github.com/priottomarcos7-coder/cucumber-cypress-exemplo.git
 cd cucumber-cypress-exemplo
-```
-
-### 2. Instale as dependências
-```bash
 npm install
 ```
 
-### 3. Execute os testes
-```bash
-# Executar testes em modo headless
-npx cypress run
+## Execução dos testes
 
-# Executar testes com interface gráfica
+Modo headless:
+
+```bash
+npx cypress run
+```
+
+Modo interativo:
+
+```bash
 npx cypress open
 ```
-# Excutar testes com tags
+
+Execução por tag:
+
 ```bash
 npx cypress run --env tags='@learn'
 ```
 
-## 🛠 Tecnologias utilizadas
+## Estratégia de testes
 
-- **Cypress** - Framework de testes E2E
-- **Cucumber** - Ferramenta BDD para escrita de cenários
-- **JavaScript** - Linguagem de programação
+O uso de BDD permite descrever cenários com foco no comportamento esperado. O Cucumber organiza os cenários e o Cypress realiza a automação das interações e validações.
 
-## 📚 Recursos de aprendizado
+## Resultado esperado
 
-Este projeto foi criado para fins educacionais da EBAC (Escola Britânica de Artes Criativas e Tecnologia).
+Os cenários devem ser executados pelo Cypress e apresentar o resultado de cada caso, permitindo identificar comportamentos aprovados e falhas.
+
+## Repositório
+
+https://github.com/priottomarcos7-coder/cucumber-cypress-exemplo
+
+## Autor
+
+Marcos Priotto
+
+Projeto desenvolvido como parte da formação em Engenharia de Qualidade de Software na EBAC.
