@@ -73,3 +73,37 @@ https://github.com/priottomarcos7-coder/cucumber-cypress-exemplo
 Marcos Priotto
 
 Projeto desenvolvido como parte da formação em Engenharia de Qualidade de Software na EBAC.
+---
+
+# English Version
+
+# Advanced Web Automation — Cypress with Cucumber
+
+## Goal
+
+Test automation project using Cypress integrated with Cucumber, applying the Behavior-Driven Development (BDD) approach.
+
+The scenarios are written in Gherkin to describe application behavior in a readable format.
+
+## Technologies
+
+- Cypress
+- Cucumber
+- Gherkin
+- JavaScript
+- BDD
+
+## What the Project Covers
+
+- Writing test scenarios in Gherkin.
+- Connecting feature files to step definitions.
+- Automating web flows with Cypress.
+- Organizing tests to improve readability and maintenance.
+
+## Execution
+
+Install dependencies using npm and run the scripts configured in the project's `package.json`. The exact command depends on the scripts available in the repository.
+
+## Goal of the Practice
+
+Practice structuring readable, maintainable automated tests using BDD and Cypress.
