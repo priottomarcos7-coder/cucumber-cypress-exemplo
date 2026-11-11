@@ -1,13 +1,23 @@
 {
   "name": "cucumber-cypress-exemplo",
-  "version": "1.0.0",
-  "description": "Exemplo de modelo com cypress e cucumber",
+  "version": "1.1.0",
+  "description": "Automação E2E com Cypress, Cucumber, Gherkin e BDD",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress run"
+    "test": "cypress run",
+    "test:open": "cypress open",
+    "test:smoke": "cypress run --env tags='@smoke'",
+    "test:regression": "cypress run --env tags='@regression'"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "qa",
+    "cypress",
+    "cucumber",
+    "gherkin",
+    "bdd",
+    "test-automation"
+  ],
+  "author": "Marcos Priotto",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
@@ -15,5 +25,17 @@
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.6",
     "cypress": "^14.5.4",
     "esbuild": "^0.25.10"
+  },
+  "cypress-cucumber-preprocessor": {
+    "filterSpecs": true,
+    "omitFiltered": true,
+    "json": {
+      "enabled": true,
+      "output": "cypress/reports/cucumber-report.json"
+    },
+    "html": {
+      "enabled": true,
+      "output": "cypress/reports/cucumber-report.html"
+    }
   }
 }
