@@ -1,28 +1,26 @@
-# Automação Web com Cypress, Cucumber e BDD
+# Automação E2E com Cypress, Cucumber e BDD
 
-Projeto de automação de testes E2E desenvolvido durante a formação em Engenharia de Qualidade de Software. A aplicação sob teste é o site público do [Cucumber](https://cucumber.io/).
+Projeto de automação de testes end-to-end desenvolvido como prática da formação em Engenharia de Qualidade de Software. A suíte utiliza o site público do [Cucumber](https://cucumber.io/) como aplicação sob teste.
 
-O objetivo é praticar a escrita de cenários em Gherkin, a implementação de step definitions reutilizáveis e a execução de testes automatizados com Cypress.
+O foco é aplicar BDD com Gherkin, integrar os cenários ao Cypress, reutilizar Step Definitions e executar os testes localmente e em pipeline CI.
 
 ## O que o projeto demonstra
 
-- BDD com cenários escritos em Gherkin.
-- Integração do Cucumber com Cypress.
-- Cenários orientados a exemplos com **Scenario Outline**.
-- Reutilização de passos nas Step Definitions.
-- Organização por tags: `@smoke`, `@regression`, `@navigation` e outras.
-- Testes de navegação, URL, conteúdo, atualização e retorno de página.
-- Execução local em modo headless ou interativo.
-- Evidências de falha com screenshots e vídeos do Cypress.
-- Pipeline de execução automatizada com GitHub Actions.
+- Escrita de cenários em Gherkin, em português.
+- Integração entre Cypress e Cucumber.
+- Implementação de Step Definitions reutilizáveis.
+- Organização e execução de cenários por tags: `@smoke`, `@regression`, `@direct-access` e `@navigation`.
+- Validação de acesso direto a páginas, URL e título principal.
+- Verificação de navegação após atualização da página.
+- Execução em modo headless, interativo e pelo GitHub Actions.
+- Geração de relatório Cucumber e evidências do Cypress.
 
 ## Tecnologias
 
 - JavaScript
 - Node.js e npm
 - Cypress 14
-- Cucumber
-- Gherkin
+- Cucumber e Gherkin
 - BDD
 - GitHub Actions
 
@@ -34,6 +32,8 @@ O objetivo é praticar a escrita de cenários em Gherkin, a implementação de s
 
 ## Instalação
 
+Clone o repositório e instale as dependências:
+
 ```bash
 git clone https://github.com/priottomarcos7-coder/cucumber-cypress-exemplo.git
 cd cucumber-cypress-exemplo
@@ -42,29 +42,25 @@ npm install
 
 ## Execução dos testes
 
-Executar todos os cenários:
+| Comando | Finalidade |
+|---|---|
+| `npm test` | Executa todos os cenários em modo headless |
+| `npm run test:smoke` | Executa os cenários marcados com `@smoke` |
+| `npm run test:regression` | Executa os cenários marcados com `@regression` |
+| `npm run test:open` | Abre a interface do Cypress |
 
-```bash
-npm test
-```
+## Cenários automatizados
 
-Executar somente os cenários smoke:
+Os testes estão em `cypress/e2e/teste.feature` e cobrem quatro situações:
 
-```bash
-npm run test:smoke
-```
+| Cenário | Cobertura |
+|---|---|
+| Acessar a introdução da documentação | Acesso direto, URL e título principal visível |
+| Acessar a referência da API | Acesso direto, URL e conteúdo do título |
+| Acessar as perguntas frequentes | Acesso direto, URL e conteúdo do título |
+| Atualizar a página de documentação | Persistência do acesso após reload |
 
-Executar os cenários de regressão:
-
-```bash
-npm run test:regression
-```
-
-Abrir a interface do Cypress:
-
-```bash
-npm run test:open
-```
+As validações de título são adequadas ao conteúdo de cada página. Na introdução, o teste verifica a visibilidade de um título principal não vazio; nas páginas de API e FAQ, também confere o texto esperado.
 
 ## Estrutura do projeto
 
@@ -86,51 +82,40 @@ cypress.config.js
 package.json
 ```
 
-## Estratégia de testes
-
-Os cenários cobrem os principais fluxos de navegação do site Cucumber.io:
-
-| Cenário | Tipo |
-|---|---|
-| Acessar Documentation e Learn | Smoke / navegação |
-| Retornar à página inicial | Regressão |
-| Atualizar a página Learn | Regressão |
-| Acessar Documentation diretamente | Regressão |
-
-Os cenários utilizam exemplos para validar diferentes seções com a mesma estrutura de passos. As validações verificam URL e conteúdo visível, evitando considerar apenas o clique como evidência de sucesso.
-
 ## Integração contínua
 
-O GitHub Actions executa os testes em pushes e Pull Requests direcionados à branch principal. Os artefatos de execução são publicados mesmo quando os testes falham, para facilitar a análise.
+O workflow do GitHub Actions instala as dependências com `npm ci` e executa a suíte Cypress em pushes, Pull Requests direcionados às branches principais e execuções manuais.
+
+Os relatórios Cucumber, screenshots e vídeos são enviados como artefatos da execução, quando disponíveis, para apoiar a análise dos resultados.
 
 ## Evidências e limitações
 
-O projeto depende da disponibilidade e da estrutura do site público cucumber.io. Alterações no conteúdo, nos links ou no layout do site podem exigir atualização dos seletores e das expectativas. A suíte valida os fluxos definidos neste repositório; não representa uma certificação ou avaliação completa do site.
+A aplicação sob teste é um site público externo. Mudanças em suas páginas, conteúdo ou estrutura podem exigir ajustes nos seletores e nas expectativas dos cenários. Portanto, os resultados representam a execução desta suíte nos fluxos cobertos, e não uma avaliação completa do site.
 
-Os relatórios, screenshots e vídeos são gerados durante a execução. O resultado real da pipeline pode ser consultado na aba **Actions** do GitHub.
+O status das execuções pode ser consultado na aba **Actions** do repositório.
 
 ## Repositório
 
-https://github.com/priottomarcos7-coder/cucumber-cypress-exemplo
+[ cypress-cucumber-exemplo no GitHub ](https://github.com/priottomarcos7-coder/cucumber-cypress-exemplo)
 
 ---
 
 # English Version
 
-## Cypress, Cucumber and BDD Web Automation
+## E2E Automation with Cypress, Cucumber and BDD
 
-End-to-end test automation project developed as part of a Software Quality Engineering course. The application under test is the public [Cucumber website](https://cucumber.io/).
+End-to-end test automation project developed as part of a Software Quality Engineering learning portfolio. The public [Cucumber website](https://cucumber.io/) is used as the system under test.
 
 ### Project highlights
 
 - BDD scenarios written in Gherkin.
-- Cypress integration with Cucumber.
-- Scenario Outline and reusable step definitions.
-- Test organization using tags.
-- Navigation, URL, page content, reload and browser history checks.
+- Cypress and Cucumber integration.
+- Reusable step definitions.
+- Scenario organization with tags.
+- Direct page access, URL, heading and reload checks.
 - Headless and interactive execution.
-- Cypress screenshots and videos on test failures.
-- GitHub Actions workflow for continuous integration.
+- GitHub Actions continuous integration.
+- Cucumber reports and Cypress execution evidence.
 
 ### Installation
 
@@ -151,7 +136,7 @@ npm run test:open
 
 ### Notes
 
-The tests depend on the public Cucumber website. Changes to its pages or navigation may require updates to selectors and assertions. Execution reports and evidence are generated when the tests run.
+The test suite depends on the public Cucumber website. Changes to its content or structure may require updates to selectors and assertions. Workflow results and available execution artifacts can be checked in the repository's **Actions** tab.
 
 ---
 
