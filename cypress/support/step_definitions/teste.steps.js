@@ -32,6 +32,12 @@ Then('o título principal deve apresentar {string}', (titulo) => {
   cy.get('h1').should('be.visible').and('contain', titulo);
 });
 
+Then('o título principal deve estar visível', () => {
+  cy.get('h1').should('be.visible').and(($h1) => {
+    expect($h1.text().trim()).not.to.equal('');
+  });
+});
+
 Then('devo estar na página inicial do Cucumber.io', () => {
   cy.location('pathname').should('eq', '/');
 });
