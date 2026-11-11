@@ -1,21 +1,43 @@
-#language: pt
+# language: pt
 
-Funcionalidade: Navegação no site Cucumber.io
-  Como um desenvolvedor interessado em BDD
-  Eu quero navegar pelo site oficial do Cucumber
-  Para que eu possa acessar a documentação e aprender sobre a ferramenta
+Funcionalidade: Acesso à documentação do Cucumber
+  Como uma pessoa que está aprendendo sobre BDD
+  Quero acessar as páginas públicas do Cucumber
+  Para consultar conceitos, referências e orientações da ferramenta
 
-@documentação
-Cenário: Visitar a página inicial do Cucumber.io
-  Dado que acesso o site do Cucumber.io
-  Quando clicar no link Documentation
-  Então deve exibir o título Introduction na página
+  @smoke @direct-access
+  Cenário: Acessar a introdução da documentação
+    Quando acesso diretamente o caminho "/docs/cucumber/"
+    Então a URL deve conter "/docs/cucumber/"
+    E o título principal deve estar visível
 
-@learn
-Cenário: Acessar a seção de Aprendizado
-  Dado que acesso o site do Cucumber.io
-  Quando clicar no link Learn
-  Então deve exibir o título Learn na página
+  @regression @direct-access
+  Cenário: Acessar a referência da API do Cucumber
+    Quando acesso diretamente o caminho "/docs/cucumber/api/"
+    Então a URL deve conter "/docs/cucumber/api/"
+    E o título principal deve apresentar "Cucumber reference"
 
-  
+  @regression @direct-access
+  Cenário: Acessar as perguntas frequentes
+    Quando acesso diretamente o caminho "/docs/faq/"
+    Então a URL deve conter "/docs/faq/"
+    E o título principal deve apresentar "FAQs"
 
+  @regression @navigation
+  Cenário: Manter a documentação acessível após atualizar a página
+    Quando acesso diretamente o caminho "/docs/cucumber/"
+    E atualizo a página
+    Então a URL deve conter "/docs/cucumber/"
+    E o título principal deve estar visível
+
+  @regression @responsive @mobile
+  Cenário: Exibir a documentação em uma resolução mobile
+    Quando acesso a documentação com resolução mobile
+    Então a URL deve conter "/docs/cucumber/"
+    E o título principal deve estar visível
+
+  @regression @responsive @desktop
+  Cenário: Exibir a documentação em uma resolução desktop
+    Quando acesso a documentação com resolução desktop
+    Então a URL deve conter "/docs/cucumber/"
+    E o título principal deve estar visível

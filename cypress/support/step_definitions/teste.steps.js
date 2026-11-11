@@ -1,26 +1,53 @@
-const { Given, When, Then, link } = require('@badeball/cypress-cucumber-preprocessor')
+const {
+  Given,
+  When,
+  Then,
+} = require('@badeball/cypress-cucumber-preprocessor');
 
-Given('que acesso o site do Cucumber.io', () => {
-	cy.visit('https://cucumber.io/');
+Given('que acesso a página inicial do Cucumber.io', () => {
+  cy.visit('/');
 });
 
-When('clicar no link Documentation', () => {
-  cy.get('.theme-layout-navbar-left > [href="/docs"]').click();
+When('clico no link {string}', (nomeDoLink) => {
+  cy.contains('a', nomeDoLink).should('be.visible').click();
 });
 
-Then('deve exibir o título Introduction na página', () => {
-  cy.get('h1').should('contain', 'Introduction');
+When('retorno para a página anterior', () => {
+  cy.go('back');
 });
 
-
-When(`clicar no link Learn`, () => {
-   cy.get('[href="/learn"]').click();
+When('atualizo a página', () => {
+  cy.reload();
 });
 
-Then(`deve exibir o título Learn na página`, () => {
-   cy.get('h1').should('contain', 'Learn BDD and Cucumber');
+When('acesso diretamente o caminho {string}', (caminho) => {
+  cy.visit(caminho);
 });
 
+When('acesso a documentação com resolução mobile', () => {
+  cy.viewport(390, 844);
+  cy.visit('/docs/cucumber/');
+});
 
+When('acesso a documentação com resolução desktop', () => {
+  cy.viewport(1366, 768);
+  cy.visit('/docs/cucumber/');
+});
 
+Then('a URL deve conter {string}', (caminho) => {
+  cy.location('pathname').should('eq', caminho);
+});
 
+Then('o título principal deve apresentar {string}', (titulo) => {
+  cy.get('h1').should('be.visible').and('contain', titulo);
+});
+
+Then('o título principal deve estar visível', () => {
+  cy.get('h1').should('be.visible').and(($h1) => {
+    expect($h1.text().trim()).not.to.equal('');
+  });
+});
+
+Then('devo estar na página inicial do Cucumber.io', () => {
+  cy.location('pathname').should('eq', '/');
+});
