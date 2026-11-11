@@ -12,6 +12,7 @@ O foco é aplicar BDD com Gherkin, integrar os cenários ao Cypress, reutilizar 
 - Organização e execução de cenários por tags: `@smoke`, `@regression`, `@direct-access` e `@navigation`.
 - Validação de acesso direto a páginas, URL e título principal.
 - Verificação de navegação após atualização da página.
+- Validação da exibição da documentação em resoluções mobile e desktop.
 - Execução em modo headless, interativo e pelo GitHub Actions.
 - Geração de relatório Cucumber e evidências do Cypress.
 
@@ -51,7 +52,7 @@ npm install
 
 ## Cenários automatizados
 
-Os testes estão em `cypress/e2e/teste.feature` e cobrem quatro situações:
+Os testes estão em `cypress/e2e/teste.feature` e cobrem seis situações:
 
 | Cenário | Cobertura |
 |---|---|
@@ -59,6 +60,8 @@ Os testes estão em `cypress/e2e/teste.feature` e cobrem quatro situações:
 | Acessar a referência da API | Acesso direto, URL e conteúdo do título |
 | Acessar as perguntas frequentes | Acesso direto, URL e conteúdo do título |
 | Atualizar a página de documentação | Persistência do acesso após reload |
+| Exibir a documentação em resolução mobile | Viewport de 390 × 844 e conteúdo principal visível |
+| Exibir a documentação em resolução desktop | Viewport de 1366 × 768 e conteúdo principal visível |
 
 As validações de título são adequadas ao conteúdo de cada página. Na introdução, o teste verifica a visibilidade de um título principal não vazio; nas páginas de API e FAQ, também confere o texto esperado.
 
@@ -114,6 +117,7 @@ End-to-end test automation project developed as part of a Software Quality Engin
 - Scenario organization with tags.
 - Direct page access, URL, heading and reload checks.
 - Headless and interactive execution.
+- Responsive checks at mobile and desktop viewport sizes.
 - GitHub Actions continuous integration.
 - Cucumber reports and Cypress execution evidence.
 
