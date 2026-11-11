@@ -24,6 +24,16 @@ When('acesso diretamente o caminho {string}', (caminho) => {
   cy.visit(caminho);
 });
 
+When('acesso a documentação com resolução mobile', () => {
+  cy.viewport(390, 844);
+  cy.visit('/docs/cucumber/');
+});
+
+When('acesso a documentação com resolução desktop', () => {
+  cy.viewport(1366, 768);
+  cy.visit('/docs/cucumber/');
+});
+
 Then('a URL deve conter {string}', (caminho) => {
   cy.location('pathname').should('eq', caminho);
 });
