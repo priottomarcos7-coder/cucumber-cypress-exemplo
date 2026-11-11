@@ -48,6 +48,15 @@ Then('o título principal deve estar visível', () => {
   });
 });
 
+Then('a página não deve apresentar rolagem horizontal', () => {
+  cy.window().then((browserWindow) => {
+    const larguraDoDocumento =
+      browserWindow.document.documentElement.scrollWidth;
+
+    expect(larguraDoDocumento).to.be.at.most(browserWindow.innerWidth);
+  });
+});
+
 Then('devo estar na página inicial do Cucumber.io', () => {
   cy.location('pathname').should('eq', '/');
 });

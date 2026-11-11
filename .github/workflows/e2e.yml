@@ -22,10 +22,17 @@ jobs:
           cache: npm
 
       - name: Install dependencies
+        id: install
         run: npm ci
 
-      - name: Run Cypress and Cucumber tests
+      - name: Run complete test suite
         run: npm test
+
+      - name: Run smoke tests separately
+        run: npm run test:smoke
+
+      - name: Run regression tests separately
+        run: npm run test:regression
 
       - name: Upload test evidence
         if: always()
