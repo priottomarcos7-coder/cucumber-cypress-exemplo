@@ -1,31 +1,35 @@
-# Automação Web Avançada — Cypress com Cucumber
+# Automação Web com Cypress, Cucumber e BDD
 
-## Objetivo
+Projeto de automação de testes E2E desenvolvido durante a formação em Engenharia de Qualidade de Software. A aplicação sob teste é o site público do [Cucumber](https://cucumber.io/).
 
-Projeto de automação de testes de interface utilizando Cypress integrado ao Cucumber, desenvolvido durante a formação em Engenharia de Qualidade de Software.
+O objetivo é praticar a escrita de cenários em Gherkin, a implementação de step definitions reutilizáveis e a execução de testes automatizados com Cypress.
 
-Neste projeto desenvolvi cenários de teste utilizando BDD para organizar o comportamento esperado da aplicação de forma mais próxima da linguagem do negócio.
+## O que o projeto demonstra
 
-## O que desenvolvi
-
-- Automação E2E com Cypress.
-- Organização de cenários utilizando Cucumber e BDD.
-- Execução dos cenários em modo gráfico e headless.
-- Execução de cenários utilizando tags.
-- Estruturação dos testes para facilitar leitura e manutenção.
+- BDD com cenários escritos em Gherkin.
+- Integração do Cucumber com Cypress.
+- Cenários orientados a exemplos com **Scenario Outline**.
+- Reutilização de passos nas Step Definitions.
+- Organização por tags: `@smoke`, `@regression`, `@navigation` e outras.
+- Testes de navegação, URL, conteúdo, atualização e retorno de página.
+- Execução local em modo headless ou interativo.
+- Evidências de falha com screenshots e vídeos do Cypress.
+- Pipeline de execução automatizada com GitHub Actions.
 
 ## Tecnologias
 
-- Cypress
-- Cucumber
-- BDD
 - JavaScript
-- Node.js
+- Node.js e npm
+- Cypress 14
+- Cucumber
+- Gherkin
+- BDD
+- GitHub Actions
 
 ## Pré-requisitos
 
-- Node.js 14 ou superior.
-- npm ou yarn.
+- Node.js 20 ou superior.
+- npm.
 - Git.
 
 ## Instalação
@@ -38,72 +42,117 @@ npm install
 
 ## Execução dos testes
 
-Modo headless:
+Executar todos os cenários:
 
 ```bash
-npx cypress run
+npm test
 ```
 
-Modo interativo:
+Executar somente os cenários smoke:
 
 ```bash
-npx cypress open
+npm run test:smoke
 ```
 
-Execução por tag:
+Executar os cenários de regressão:
 
 ```bash
-npx cypress run --env tags='@learn'
+npm run test:regression
+```
+
+Abrir a interface do Cypress:
+
+```bash
+npm run test:open
+```
+
+## Estrutura do projeto
+
+```text
+cypress/
+├── e2e/
+│   └── teste.feature
+├── fixtures/
+│   └── example.json
+└── support/
+    ├── commands.js
+    ├── e2e.js
+    └── step_definitions/
+        └── teste.steps.js
+.github/
+└── workflows/
+    └── e2e.yml
+cypress.config.js
+package.json
 ```
 
 ## Estratégia de testes
 
-O uso de BDD permite descrever cenários com foco no comportamento esperado. O Cucumber organiza os cenários e o Cypress realiza a automação das interações e validações.
+Os cenários cobrem os principais fluxos de navegação do site Cucumber.io:
 
-## Resultado esperado
+| Cenário | Tipo |
+|---|---|
+| Acessar Documentation e Learn | Smoke / navegação |
+| Retornar à página inicial | Regressão |
+| Atualizar a página Learn | Regressão |
+| Acessar Documentation diretamente | Regressão |
 
-Os cenários devem ser executados pelo Cypress e apresentar o resultado de cada caso, permitindo identificar comportamentos aprovados e falhas.
+Os cenários utilizam exemplos para validar diferentes seções com a mesma estrutura de passos. As validações verificam URL e conteúdo visível, evitando considerar apenas o clique como evidência de sucesso.
+
+## Integração contínua
+
+O GitHub Actions executa os testes em pushes e Pull Requests direcionados à branch principal. Os artefatos de execução são publicados mesmo quando os testes falham, para facilitar a análise.
+
+## Evidências e limitações
+
+O projeto depende da disponibilidade e da estrutura do site público cucumber.io. Alterações no conteúdo, nos links ou no layout do site podem exigir atualização dos seletores e das expectativas. A suíte valida os fluxos definidos neste repositório; não representa uma certificação ou avaliação completa do site.
+
+Os relatórios, screenshots e vídeos são gerados durante a execução. O resultado real da pipeline pode ser consultado na aba **Actions** do GitHub.
 
 ## Repositório
 
 https://github.com/priottomarcos7-coder/cucumber-cypress-exemplo
 
-## Autor
-
-Marcos Priotto
-
-Projeto desenvolvido como parte da formação em Engenharia de Qualidade de Software na EBAC.
 ---
 
 # English Version
 
-# Advanced Web Automation — Cypress with Cucumber
+## Cypress, Cucumber and BDD Web Automation
 
-## Goal
+End-to-end test automation project developed as part of a Software Quality Engineering course. The application under test is the public [Cucumber website](https://cucumber.io/).
 
-Test automation project using Cypress integrated with Cucumber, applying the Behavior-Driven Development (BDD) approach.
+### Project highlights
 
-The scenarios are written in Gherkin to describe application behavior in a readable format.
+- BDD scenarios written in Gherkin.
+- Cypress integration with Cucumber.
+- Scenario Outline and reusable step definitions.
+- Test organization using tags.
+- Navigation, URL, page content, reload and browser history checks.
+- Headless and interactive execution.
+- Cypress screenshots and videos on test failures.
+- GitHub Actions workflow for continuous integration.
 
-## Technologies
+### Installation
 
-- Cypress
-- Cucumber
-- Gherkin
-- JavaScript
-- BDD
+```bash
+git clone https://github.com/priottomarcos7-coder/cucumber-cypress-exemplo.git
+cd cucumber-cypress-exemplo
+npm install
+```
 
-## What the Project Covers
+### Test commands
 
-- Writing test scenarios in Gherkin.
-- Connecting feature files to step definitions.
-- Automating web flows with Cypress.
-- Organizing tests to improve readability and maintenance.
+```bash
+npm test
+npm run test:smoke
+npm run test:regression
+npm run test:open
+```
 
-## Execution
+### Notes
 
-Install dependencies using npm and run the scripts configured in the project's `package.json`. The exact command depends on the scripts available in the repository.
+The tests depend on the public Cucumber website. Changes to its pages or navigation may require updates to selectors and assertions. Execution reports and evidence are generated when the tests run.
 
-## Goal of the Practice
+---
 
-Practice structuring readable, maintainable automated tests using BDD and Cypress.
+Projeto desenvolvido por **Marcos Priotto** como prática de automação de testes.
