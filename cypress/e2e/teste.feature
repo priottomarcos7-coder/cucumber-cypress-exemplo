@@ -29,3 +29,15 @@ Funcionalidade: Acesso à documentação do Cucumber
     E atualizo a página
     Então a URL deve conter "/docs/cucumber/"
     E o título principal deve estar visível
+
+  @regression @responsive @mobile
+  Cenário: Exibir a documentação em uma resolução mobile
+    Quando acesso a documentação com resolução mobile
+    Então a URL deve conter "/docs/cucumber/"
+    E o título principal deve estar visível
+
+  @regression @responsive @desktop
+  Cenário: Exibir a documentação em uma resolução desktop
+    Quando acesso a documentação com resolução desktop
+    Então a URL deve conter "/docs/cucumber/"
+    E o título principal deve estar visível
