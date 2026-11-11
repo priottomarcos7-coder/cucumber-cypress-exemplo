@@ -1,13 +1,13 @@
 {
   "name": "cucumber-cypress-exemplo",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "description": "Automação E2E com Cypress, Cucumber, Gherkin e BDD",
   "main": "index.js",
   "scripts": {
     "test": "cypress run",
     "test:open": "cypress open",
-    "test:smoke": "cypress run --env tags='@smoke'",
-    "test:regression": "cypress run --env tags='@regression'"
+    "test:smoke": "cypress run --env tags=@smoke",
+    "test:regression": "cypress run --env tags=@regression"
   },
   "keywords": [
     "qa",
@@ -31,11 +31,11 @@
     "omitFiltered": true,
     "json": {
       "enabled": true,
-      "output": "cypress/reports/cucumber-report.json"
+      "output": "cucumber-report.json"
     },
     "html": {
       "enabled": true,
-      "output": "cypress/reports/cucumber-report.html"
+      "output": "cucumber-report.html"
     }
   }
 }
