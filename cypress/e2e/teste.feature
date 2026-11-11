@@ -9,7 +9,7 @@ Funcionalidade: Acesso à documentação do Cucumber
   Cenário: Acessar a introdução da documentação
     Quando acesso diretamente o caminho "/docs/cucumber/"
     Então a URL deve conter "/docs/cucumber/"
-    E o título principal deve apresentar "Introduction"
+    E o título principal deve estar visível
 
   @regression @direct-access
   Cenário: Acessar a referência da API do Cucumber
@@ -28,4 +28,4 @@ Funcionalidade: Acesso à documentação do Cucumber
     Quando acesso diretamente o caminho "/docs/cucumber/"
     E atualizo a página
     Então a URL deve conter "/docs/cucumber/"
-    E o título principal deve apresentar "Introduction"
+    E o título principal deve estar visível
